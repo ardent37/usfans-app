@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>USFans</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+  <!-- iOS: abrir a pantalla completa al añadir a inicio -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="USFans">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #ffffff;
+      overscroll-behavior: none;
+    }
+    #app {
+      position: fixed;
+      top: env(safe-area-inset-top, 0);
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - env(safe-area-inset-top, 0));
+      border: 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <iframe
+    id="app"
+    src="https://usfans.com/"
+    title="USFans"
+    allow="clipboard-read; clipboard-write; fullscreen; payment; camera; microphone; geolocation; web-share"
+    allowfullscreen
+    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
